@@ -3,10 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <title>Random Bible Quote</title>
-    <link rel="stylesheet" href="quotemachine/style.css">
-    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300i|Passion+One:700" rel="stylesheet">
+    <script src="scripts/jquery.js"></script>
   </head>
-  <body>
-    
+  <body class="background">
+    <h1 class="bigheader">EAT THIS!</h1>
+    <h3 class="subtitle">A random Bible verse machine</h3>
+    <div class = "thebox">
+      <button id="getVerse">
+        click here for now
+      </button>
+      <div id="verse">Loading...</div>
+    </div>
   </body>
+
+<script>
+$(document).ready(function() {
+    $("#getVerse").on("click", function(){
+     $.getJSON("http://www.ourmanna.com/verses/api/get?format=json&order=random", function(json){
+       $(".verse").html(JSON.stringify(json));
+     });
+    });
+  });
+</script>
+
 </html>
